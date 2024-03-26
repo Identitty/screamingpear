@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" href="LexPage.css">
+</head>
 <body>
 
-<h1 style="text-align: center;">Hi My Love</h1>
-<h3 style="text-align: center;">Unwind and play a classic</h3>
-<iframe src="https://www.coolmathgames.com/sites/default/files/public_games/49726/" class="square" width="800px" height="600px" id="html5game" scrolling="no" style="display:block; margin:0 auto;"></iframe>
+<h1 style="text-align: center;">Hi My Love! Play Some Farkle :3</h1>
 
+<div id="dice">
+    <p id="die1" class="die">
+    
+    </p>
+    <p id="die2" class="die">
+    
+    </p>
+    <p id="die3" class="die">
+    
+    </p>
+    <p id="die4" class="die">
+    
+    </p>
+    <p id="die5" class="die">
+    
+    </p>
+    <p id="die6" class="die">
+    
+    </p>
+</div>
+<button id="button">Roll Dice</button>
+<button id="resethidden" style="display: none;">Farkle! Try Again?</button>
+<div id="autodiv">
+    <input type="checkbox" class="auto" id="cb">
+    <label for="auto" class="auto">Auto-Remove Dice?</label>
+</div>
+<h2 id="score">0</h2>
+<button id="reset">Reset Game</button>
+<script src="LexPage.js"></script>
 </body>
 </html>
