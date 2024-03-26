@@ -36,10 +36,22 @@ button {
     left:50%;
     height: 0;
 }
+#logscore {
+    pointer-events: none;
+    opacity: 0.5;
+}
 .auto {
     position: relative;
     left:110px;
     bottom: 25px;
+}
+#scores {
+    position: absolute;
+    left:10%;
+    bottom: 10%;
+}
+#scores > p {
+    text-align: left;
 }
 
 @-webkit-keyframes fadeOutUp {
