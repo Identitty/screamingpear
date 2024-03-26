@@ -2,6 +2,8 @@ const triple = [300,200,300,400,500,600]
 var stats = {'singleone':0,'singlefive':0,'triple':0,'four':0,'five':0,'six':0,'straight':0,'threepair':0,'fourwithpair':0,'twotriple':0,'totalscore':0}
 
 let score = 0
+let dailyhigh = 0
+let alltimehigh = 0
 var rolls = [0,0,0,0,0,0]
 let farklecounter = 0
 let scoredcounter = 0
@@ -14,6 +16,8 @@ const reset = document.getElementById('reset')
 const resethidden = document.getElementById('resethidden')
 const scoretext = document.getElementById('score')
 const cb = document.getElementById('cb')
+const dailyhightext = document.getElementById('dailyhigh')
+const logscore = document.getElementById('logscore')
 var dice = []
 for (let i = 0; i < 6; i++){
     dice.push(document.querySelector(`#dice :nth-child(${i+1})`))
@@ -195,6 +199,10 @@ function CalculateScore(rolls){
         button.innerHTML = 'REROLL!!'
     }
     scoretext.innerHTML = score
+    if (score >= 500){
+        logscore.style.opacity='1'
+        logscore.style.pointerEvents='auto'
+    }
 }
 }
 
@@ -208,12 +216,25 @@ function ResetGame(){
     gamestate = 1
     score = 0
     scoretext.innerHTML = score
-    
+    logscore.style.opacity='0.5'
+    logscore.style.pointerEvents='none'
+}
+
+function takeScore(){
+    if (score > dailyhigh){
+        dailyhigh = score
+        dailyhightext.innerHTML = `Highest Score (this session): ${dailyhigh}`
+    }
+    if (score > alltimehigh){
+        alltimehigh = score
+    }
+    ResetGame()
 }
 
 button.addEventListener('click',RollDie)
 reset.addEventListener('click',ResetGame)
 resethidden.addEventListener('click',ResetGame)
+logscore.addEventListener('click',takeScore)
 document.body.addEventListener('click', function(e) {
     e = e.target
     if (e.className && e.className.indexOf('removable') != -1 && e.className.indexOf('removed') == -1) {
