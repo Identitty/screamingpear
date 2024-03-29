@@ -2,7 +2,7 @@
 
 Just a personal project for the love of my life
 
-# Farkle Formulas
+# Chance of a Farkle
 Number of possible scoring rolls, where x is the addition of scores not involving ones or fives (see table below): $$\frac{6^n}{3^n}\sum_{i=1}^{n} (2^{n-i}*3^{i-1}) + x$$
 
 | N | X |
