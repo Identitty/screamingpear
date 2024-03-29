@@ -1,13 +1,18 @@
 const triple = [300,200,300,400,500,600]
 var stats = {'singleone':0,'singlefive':0,'triple':0,'four':0,'five':0,'six':0,'straight':0,'threepair':0,'fourwithpair':0,'twotriple':0,'totalscore':0}
 
+if (document.cookie == ''){
+    document.cookie = 'score=0;'
+}
+
 let score = 0
 let dailyhigh = 0
-let alltimehigh = 0
+let alltimehigh = document.cookie
 var rolls = [0,0,0,0,0,0]
 let farklecounter = 0
 let scoredcounter = 0
 var gamestate = 1
+const farklechance = [66.67,44.44,27.78,15.74,9.26,3.94]
 //0 = regular 1 = reset 2 = farkle
 
 const dicediv = document.getElementById('dice')
@@ -17,7 +22,10 @@ const resethidden = document.getElementById('resethidden')
 const scoretext = document.getElementById('score')
 const cb = document.getElementById('cb')
 const dailyhightext = document.getElementById('dailyhigh')
+const alltimehightext = document.getElementById('alltimehigh')
+alltimehightext.innerHTML=`Highest Score (all time): ${alltimehigh}`
 const logscore = document.getElementById('logscore')
+const chancetext = document.getElementById('farklechance')
 var dice = []
 for (let i = 0; i < 6; i++){
     dice.push(document.querySelector(`#dice :nth-child(${i+1})`))
@@ -53,7 +61,6 @@ function RollDie(){
                 dice[i].innerHTML=rolls[i]
             }
         }
-        console.log(rolls)
         gamestate = 0
         CalculateScore(rolls)
     } else if(gamestate == 2){
@@ -66,12 +73,12 @@ function RollDie(){
 function CalculateScore(rolls){
     let count = [0,0,0,0,0,0]
     let counted = {}
+    let zerocount = 0
     for (let i = 0; i < 6; i++){
         if (rolls[i] != 0){
             count[rolls[i]-1] +=1
-        }
+        } 
     }
-    console.log(count)
     count.forEach(ele => {
         if (ele != 0){
             if (counted[ele]) {
@@ -173,7 +180,6 @@ function CalculateScore(rolls){
             }
         }
     }else{
-        console.log(`Farkle :( - ${score}`)
         for (let i = 0; i < 6; i++){
             if (rolls[i] != 0){
                 dice[i].classList.add("farkle")
@@ -189,6 +195,7 @@ function CalculateScore(rolls){
     for (let i = 0; i < 6; i++){
         if (rolls[i] == 0){
             dice[i].classList.add("removable")
+            zerocount++
             if (cb.checked){
                 dice[i].classList.add("removed")
             }
@@ -199,6 +206,11 @@ function CalculateScore(rolls){
         button.innerHTML = 'REROLL!!'
     }
     scoretext.innerHTML = score
+    if (farklechance[5-zerocount] == undefined){
+        chancetext.innerHTML = `Probability of Farkle on next roll: ${farklechance[5]}%`
+    } else{
+        chancetext.innerHTML = `Probability of Farkle on next roll: ${farklechance[5-zerocount]}%`
+    }
     if (score >= 500){
         logscore.style.opacity='1'
         logscore.style.pointerEvents='auto'
@@ -218,6 +230,7 @@ function ResetGame(){
     scoretext.innerHTML = score
     logscore.style.opacity='0.5'
     logscore.style.pointerEvents='none'
+    chancetext.innerHTML = `Probability of Farkle on next roll: ${farklechance[5]}%`
 }
 
 function takeScore(){
@@ -225,8 +238,11 @@ function takeScore(){
         dailyhigh = score
         dailyhightext.innerHTML = `Highest Score (this session): ${dailyhigh}`
     }
-    if (score > alltimehigh){
-        alltimehigh = score
+    //document.cookie = 'score='+score
+    if (score > document.cookie*1){
+        //document.cookie = score
+        //alltimehigh = score
+        //alltimehightext.innerHTML = `Highest Score (all time): ${alltimehigh}`
     }
     ResetGame()
 }
@@ -241,3 +257,12 @@ document.body.addEventListener('click', function(e) {
         e.classList.add("removed")
     }
 })
+
+//to add:
+//all-time highscore using cookies
+//my all-time highscore so we can compete
+//online 1v1 capability??
+//showing what points were gotten
+//counting score when dice are clicked
+//examples: click a 1, get 100
+//click a number from a triple, all of them float up and get points
