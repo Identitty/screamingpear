@@ -1,0 +1,94 @@
+/* complaintsPortal.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;700&display=swap');
+
+body {
+    background-color: #fff0f5;
+    font-family: 'Comic Neue', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: #ffffff;
+    border: 2px dashed #ffb6c1;
+    border-radius: 20px;
+    padding: 40px;
+    width: 400px;
+    box-shadow: 0 8px 16px rgba(255, 192, 203, 0.5);
+    text-align: center;
+    animation: popIn 0.6s ease;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+input {
+    width: 95%;
+    padding: 14px;
+    margin: 14px 0;
+    border: 2px solid #ffb6c1;
+    border-radius: 12px;
+    background-color: #fffafc;
+    font-size: 18px;
+}
+
+input::placeholder {
+    font-size: 16px;
+    color: #d080a0;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ff69b4;
+    box-shadow: 0 0 6px #ff69b4;
+}
+
+select {
+    width: 95%;
+    padding: 14px;
+    margin: 14px 0;
+    border: 2px solid #ffb6c1;
+    border-radius: 12px;
+    background-color: #fffafc;
+    font-size: 18px;
+    color: #333;
+    font-family: 'Comic Neue', cursive;
+}
+
+select:focus {
+    outline: none;
+    border-color: #ff69b4;
+    box-shadow: 0 0 6px #ff69b4;
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 14px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ff1493;
+}
+
+button:active {
+    transform: scale(0.97);
+}
