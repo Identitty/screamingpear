@@ -3,16 +3,43 @@
 <head>
     <meta charset="UTF-8" />
     <title>Complaints Portal</title>
+    <link rel="stylesheet" href="complaintsPortal.css">
 </head>
 <body>
     <form id="complaints"
         method="POST" 
-        action="https://script.google.com/macros/s/AKfycbxC0n3W2Fl1oiq4ipZKXV1Okpztgqnt7m1Rg5nBvWNHY6odhx2jDec-6CnsgQvlYuw/exec"
+        action="https://script.google.com/macros/s/AKfycbwOZkyFL1-tvevrzBcxzp5DU2Bl7yQltadP3fw8xtOBIGhvKXeVXx-ePAECbBBvahA/exec"
         >
         <input name="Title" type="text" placeholder="Title" required>
-        <input name="Description" type="text" placeholder="Description" required>
-        <input name="Mood" type="text" placeholder="Mood" required>
-        <input name="Solution" type="text" placeholder="Solution" required>
+        <input name="Description" type="text" placeholder="Description">
+        <select id="Mood" name="Mood">
+            <option value="Mood" disabled selected>Select a Mood</option>
+            <option value="😭">😭</option>
+            <option value="😕">😕</option>
+            <option value="😒">😒</option>
+            <option value="😴">😴</option>
+            <option value="🥰">🥰</option>
+            <option value="😀">😀</option>
+            <option value="🙃">🙃</option>
+            <option value="🤩">🤩</option>
+            <option value="😔">😔</option>
+            <option value="🥺">🥺</option>
+            <option value="😡">😡</option>
+            <option value="🤮">🤮</option>
+            <option value="😵‍💫">😵‍💫</option>
+            <option value="🫠">🫠</option>
+        </select>
+        <select id="Solution" name="Solution">
+            <option value="Solution" disabled selected>Select a Solution</option>
+            <option value="Hug Me 🫂">Hug Me 🫂</option>
+            <option value="Kiss Me 💏">Kiss Me 💏</option>
+            <option value="Feed Me 🍣">Feed Me 🍣</option>
+            <option value="Text Me 📲">Text Me 📲</option>
+            <option value="Call Me 📞">Call Me 📞</option>
+            <option value="Sex Me 🍆">Sex Me 🍆</option>
+            <option value="Pay Attention to Me ‼️">Pay Attention to Me ‼️</option>
+            <option value="Leave Me Alone 🧑‍🦯‍➡️">Leave Me Alone 🧑‍🦯‍➡️</option>
+        </select>
         <button type="submit">Send</button>
     </form>
     <script>
